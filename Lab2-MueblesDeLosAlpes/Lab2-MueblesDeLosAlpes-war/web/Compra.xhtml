@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+         <h:form id="form">
+            <p:dataGrid var="articulo" value="#{compradoBean.articulos}" columns="3" layout="grid"
+                        rows="12" paginator="true" id="mueble"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="6,12,16">
+
+                <f:facet name="header">
+                    Compra
+                </f:facet>
+
+                <p:panel header="#{articulo.mueble.referencia}" style="text-align:center">
+                    <h:panelGrid columns="1" style="width:100%">
+                        <!--<p:graphicImage name="demo/images/car/#{car.brand}.gif"/> -->
+
+                        <h:outputText value="#{articulo.mueble.nombre}" />
+                        <h:outputText value="#{articulo.mueble.tipo}" />
+                        <h:outputLabel for="basic" value="Cantidad: " />
+                        <p:spinner id="basic" value="#{articulo.cantidad}" />
+                        <p:commandButton action="compra" value="Efectuar Pago" icon="ui-icon-star" />
+                        
+                        
+                    </h:panelGrid>  
+                </p:panel>
+
+            </p:dataGrid>
+             <h:outputText value="#{compradoBean.totalCompra}" />
+             <p:commandButton action="carrito" value="Pagar" icon="ui-icon-star" />
+         </h:form>
+
+        
+    </h:body>
+</html>
+
